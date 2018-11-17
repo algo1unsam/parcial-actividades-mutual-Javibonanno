@@ -1,0 +1,58 @@
+import Actividades.*
+import Socios.*
+import Mutual.*
+import LibrosEIdiomas.*
+
+describe "Test de actividades" {
+
+	var juan = new SocioTranquilo(maximoDeActividadesQuePuedeRealizar = 2, edad = 20)
+	var lucia = new SocioCoherente(maximoDeActividadesQuePuedeRealizar = 3, edad = 25)
+	var luis = new SocioRelajado(maximoDeActividadesQuePuedeRealizar = 5, edad = 45)
+	var miami = new ViajeDePlaya(largoPlaya = 20000,socio=juan)
+	var londres = new ExcursionACiudad(cantidadDeAtraccionesAVisitar = 5,socio=luis)
+	var cuba = new ExcursionACiudadTropical(cantidadDeAtraccionesAVisitar = 4)
+	var ironMan = new SalidaTrekking(kilometrosDeSenderosARecorrer = 800, cantidadDiasDeSolPorAnio = 300,socio=luis)
+	var yoga = new ClaseDeGimnasia()
+	var tallerLiterario = new TallerLiterario()
+	var ingles = new Idioma()
+	var frances = new Idioma()
+	var italiano = new Idioma()
+	var portugues = new Idioma()
+
+	test"Cuba no implica esfuerzo y sirve para broncearse" {
+		assert.notThat(cuba.implicaEsfuerzo())
+		assert.that(cuba.sirveParaBroncearse())
+	}
+
+	test"juan es adorador del sol" {
+		juan.agregarActividad(cuba)
+		juan.agregarActividad(miami)
+		juan.realizarActividad(cuba)
+		juan.realizarActividad(miami)
+		assert.that(juan.esAdoradorDelSol())
+	}
+
+	test "luis realizo actividades esforzadas" {
+		luis.agregarActividad(ironMan)
+		luis.agregarActividad(yoga)
+		luis.realizarActividad(ironMan)
+		luis.realizarActividad(yoga)
+		assert.equals([ ironMan, yoga ], luis.actividadesEsforzadas())
+	}
+
+	test "A juan le atrae ir a miami" {
+		juan.agregarActividad(miami)
+		juan.realizarActividad(miami)
+		assert.that(juan.actividadLeAtrae(miami))
+	}
+
+	test "A luis no le atrae ir a londres" {
+		luis.agregarActividad(londres)
+		luis.realizarActividad(londres)
+		londres.agregarIdioma(ingles)
+		luis.agregarIdioma(frances)
+		assert.notThat(luis.actividadLeAtrae(londres))
+	}
+	
+}
+
