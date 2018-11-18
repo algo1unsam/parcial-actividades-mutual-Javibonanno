@@ -2,7 +2,7 @@ import Actividades.*
 
 class Socio {
 
-	var property actividades = []
+	var property actividades = [] //Para que?
 	var property actividadesRealizadas = []
 	var property maximoDeActividadesQuePuedeRealizar
 	var property idiomas = []
@@ -61,7 +61,7 @@ class SocioCoherente inherits Socio {
 class SocioRelajado inherits Socio {
 
 	override method actividadLeAtrae(unaActividad) {
-		return unaActividad.idiomas().contains(idiomas)
+		return unaActividad.idiomas().contains(idiomas) //Que hable alguno de los idiomas
 	}
 
 }
