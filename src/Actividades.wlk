@@ -1,7 +1,7 @@
 class Actividad {
 
 	var property idiomas = []
-	var property socio = []
+	var property socio = [] // No esta bien esta coleccion aca
 
 	method agregarIdioma(unIdioma) {
 		idiomas.add(unIdioma)
@@ -46,7 +46,7 @@ class ViajeDePlaya inherits Actividad {
 	}
 
 	override method esRecomendada(unaActividad, unSocio) {
-		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty()
+		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty() // Ver que no este la actividad en la list, no qeu sea vacia
 	}
 
 }
@@ -72,7 +72,7 @@ class ExcursionACiudad inherits Actividad {
 	}
 
 	override method esRecomendada(unaActividad, unSocio) {
-		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty()
+		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty() // otra vez??
 	}
 
 }
@@ -111,7 +111,7 @@ class SalidaTrekking inherits Actividad {
 	}
 
 	override method esRecomendada(unaActividad, unSocio) {
-		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty()
+		return self.esInteresante() and socio.actividadLeAtrae(unaActividad) and unSocio.actividadesRealizadas().isEmpty() // No repetir!!
 	}
 
 }
